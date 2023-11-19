@@ -37,3 +37,24 @@ const like = 'sample';
 TODO: Tell users more about the package: where to find more information, how to
 contribute to the package, how to file issues, what response they can expect
 from the package authors, and more.
+
+
+##実現したい機能
+
+マンスリーのカレンダー機能
+複数のイベントをラベルで表示できるようにする（何種類表示するかはユーザーが選択できるようにする）
+
+##必要なパラメータ
+eventData
+タグ名 :tagName(string)
+ラベルカラー:labelColor(Color)
+イベント開始時間:startDate(DateTime)
+イベント終了時間:endDate(DateTime)
+
+タップ時のアクション:tapAction(voidCallBack)
+イベント表示数:displayEventNumber(int)
+カレンダー領域の縦サイズ:viewHeight(Double)
+カレンダー領域の横サイズ:viewWidth(Double)
+何年の何月から表示するか:minDisplayYearAndMonth(DateTime)
+何曜日から表示を始めるか:startDay(オリジナル型を作る)
+
