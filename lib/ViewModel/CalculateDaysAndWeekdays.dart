@@ -1,13 +1,13 @@
 
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Provider/DayDataProvider.dart';
 
-void calculateDaysAndWeekdays(int year, int month) {
+void calculateDaysAndWeekdays(int year, int month,WidgetRef ref) {
   DateTime firstDayOfMonth = DateTime(year, month, 1);
   DateTime lastDayOfMonth = DateTime(year, month + 1, 0);
-  final dayData = DayData();
 
   DateTime currentDay = firstDayOfMonth;
   while (currentDay.isBefore(lastDayOfMonth) || currentDay.isAtSameMomentAs(lastDayOfMonth)) {
@@ -17,22 +17,22 @@ void calculateDaysAndWeekdays(int year, int month) {
      ref.watch(DayData.mondayList).add(currentDay.day.toString());
     }
     else if (weekday == "火") {
-      dayData.tuesdayList.add(currentDay.day.toString());
+      ref.watch(DayData.tuesdayList).add(currentDay.day.toString());
     }
     else if (weekday == "水") {
-      dayData.wednesdayList.add(currentDay.day.toString());
+      ref.watch(DayData.wednesdayList).add(currentDay.day.toString());
     }
     else if (weekday == "木") {
-      dayData.thursdayList.add(currentDay.day.toString());
+      ref.watch(DayData.thursdayList).add(currentDay.day.toString());
     }
     else if (weekday == "金") {
-      dayData.fridayList.add(currentDay.day.toString());
+      ref.watch(DayData.fridayList).add(currentDay.day.toString());
     }
     else if (weekday == "土") {
-      dayData.saturdayList.add(currentDay.day.toString());
+      ref.watch(DayData.saturdayList).add(currentDay.day.toString());
     }
     else if (weekday == "日") {
-      dayData.sundayList.add(currentDay.day.toString());
+      ref.watch(DayData.sundayList).add(currentDay.day.toString());
     }
     else {
       throw Exception("this is not categorized anywhere");
@@ -41,13 +41,13 @@ void calculateDaysAndWeekdays(int year, int month) {
     currentDay = currentDay.add(const Duration(days: 1));
   }
   if (kDebugMode) {
-    print("monday${dayData.mondayList}");
-    print("tuesday${dayData.tuesdayList}");
-    print("wednesday${dayData.wednesdayList}");
-    print("thursday${dayData.thursdayList}");
-    print("friday${dayData.fridayList}");
-    print("saturday${dayData.saturdayList}");
-    print("sunday${dayData.sundayList}");
+    debugPrint("monday${DayData.mondayList}");
+    debugPrint("tuesday${DayData.tuesdayList}");
+    debugPrint("wednesday${DayData.wednesdayList}");
+    debugPrint("thursday${DayData.thursdayList}");
+    debugPrint("friday${DayData.fridayList}");
+    debugPrint("saturday${DayData.saturdayList}");
+    debugPrint("sunday${DayData.sundayList}");
   }
 
 }
