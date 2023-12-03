@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/kobayashiyuutoshigotoyou/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/kobayashiyuutoshigotoyou/my_package"
+export "FLUTTER_ROOT=/Users/kobayashiyuuto/development/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/kobayashiyuuto/StudioProjects/flutter_monthly_calendar"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=0.0.1"

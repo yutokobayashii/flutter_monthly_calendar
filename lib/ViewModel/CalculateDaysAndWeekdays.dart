@@ -10,29 +10,36 @@ void calculateDaysAndWeekdays(int year, int month,WidgetRef ref) {
   DateTime lastDayOfMonth = DateTime(year, month + 1, 0);
 
   DateTime currentDay = firstDayOfMonth;
+  debugPrint('currentDay$currentDay');
+
+
+
+  //statenotifierの勉強
+  //月の始まり(1日)が何曜日かを取得
+  debugPrint('曜日${getWeekdayName(currentDay.weekday)}');
   while (currentDay.isBefore(lastDayOfMonth) || currentDay.isAtSameMomentAs(lastDayOfMonth)) {
     String weekday = getWeekdayName(currentDay.weekday);
 
     if (weekday == "月") {
-     ref.watch(DayData.mondayList).add(currentDay.day.toString());
+     ref.read(DayData.mondayList).add(currentDay.day.toString());
     }
     else if (weekday == "火") {
-      ref.watch(DayData.tuesdayList).add(currentDay.day.toString());
+      ref.read(DayData.tuesdayList).add(currentDay.day.toString());
     }
     else if (weekday == "水") {
-      ref.watch(DayData.wednesdayList).add(currentDay.day.toString());
+      ref.read(DayData.wednesdayList).add(currentDay.day.toString());
     }
     else if (weekday == "木") {
-      ref.watch(DayData.thursdayList).add(currentDay.day.toString());
+      ref.read(DayData.thursdayList).add(currentDay.day.toString());
     }
     else if (weekday == "金") {
-      ref.watch(DayData.fridayList).add(currentDay.day.toString());
+      ref.read(DayData.fridayList).add(currentDay.day.toString());
     }
     else if (weekday == "土") {
-      ref.watch(DayData.saturdayList).add(currentDay.day.toString());
+      ref.read(DayData.saturdayList).add(currentDay.day.toString());
     }
     else if (weekday == "日") {
-      ref.watch(DayData.sundayList).add(currentDay.day.toString());
+      ref.read(DayData.sundayList).add(currentDay.day.toString());
     }
     else {
       throw Exception("this is not categorized anywhere");
@@ -40,15 +47,14 @@ void calculateDaysAndWeekdays(int year, int month,WidgetRef ref) {
 
     currentDay = currentDay.add(const Duration(days: 1));
   }
-  if (kDebugMode) {
-    debugPrint("monday${DayData.mondayList}");
-    debugPrint("tuesday${DayData.tuesdayList}");
-    debugPrint("wednesday${DayData.wednesdayList}");
-    debugPrint("thursday${DayData.thursdayList}");
-    debugPrint("friday${DayData.fridayList}");
-    debugPrint("saturday${DayData.saturdayList}");
-    debugPrint("sunday${DayData.sundayList}");
-  }
+    debugPrint("monday${ref.read(DayData.mondayList)}");
+    debugPrint("tuesday${ref.read(DayData.tuesdayList)}");
+    debugPrint("wednesday${ref.read(DayData.wednesdayList)}");
+    debugPrint("thursday${ref.read(DayData.thursdayList)}");
+    debugPrint("friday${ref.read(DayData.fridayList)}");
+    debugPrint("saturday${ref.read(DayData.saturdayList)}");
+    debugPrint("sunday${ref.read(DayData.sundayList)}");
+
 
 }
 
